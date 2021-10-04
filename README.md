@@ -107,4 +107,9 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
 ```
 
-We may finally commit our changes and deploy our code.
+## Exposing ports
+Finally, we must update the production dockerfile, `Dockerfile`, in order to allow EB to map to a port. We do this by adding the following line after the `FROM nginx` line:
+```
+EXPOSE 80
+```
+Normally, this would do nothing on a development laptop. However, this instruction is vistal for Elastic Beanstalk to know which port to map for incoming traffic.
